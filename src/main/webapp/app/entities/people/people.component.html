@@ -1,0 +1,94 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="resourceApp.people.home.title">People</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-people" [routerLink]="['/people/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="resourceApp.people.home.createLabel">
+            Create a new People
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="people?.length === 0">
+        <span jhiTranslate="resourceApp.people.home.notFound">No people found</span>
+    </div>
+    <div class="table-responsive" *ngIf="people?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.fullName">Full Name</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.preferredName">Preferred Name</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.searchName">Search Name</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.isPermittedToLogon">Is Permitted To Logon</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.logonName">Logon Name</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.isExternalLogonProvider">Is External Logon Provider</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.isSystemUser">Is System User</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.isEmployee">Is Employee</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.isSalesPerson">Is Sales Person</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.isGuestUser">Is Guest User</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.emailPromotion">Email Promotion</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.userPreferences">User Preferences</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.phoneNumber">Phone Number</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.emailAddress">Email Address</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.photo">Photo</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.customFields">Custom Fields</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.otherLanguages">Other Languages</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.validFrom">Valid From</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.people.validTo">Valid To</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let people of people ;trackBy: trackId">
+                <td><a [routerLink]="['/people', people.id, 'view' ]">{{people.id}}</a></td>
+                <td>{{people.fullName}}</td>
+                <td>{{people.preferredName}}</td>
+                <td>{{people.searchName}}</td>
+                <td>{{people.isPermittedToLogon}}</td>
+                <td>{{people.logonName}}</td>
+                <td>{{people.isExternalLogonProvider}}</td>
+                <td>{{people.isSystemUser}}</td>
+                <td>{{people.isEmployee}}</td>
+                <td>{{people.isSalesPerson}}</td>
+                <td>{{people.isGuestUser}}</td>
+                <td>{{people.emailPromotion}}</td>
+                <td>{{people.userPreferences}}</td>
+                <td>{{people.phoneNumber}}</td>
+                <td>{{people.emailAddress}}</td>
+                <td>{{people.photo}}</td>
+                <td>{{people.customFields}}</td>
+                <td>{{people.otherLanguages}}</td>
+                <td>{{people.validFrom | date:'mediumDate'}}</td>
+                <td>{{people.validTo | date:'mediumDate'}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/people', people.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/people', people.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/people', { outlets: { popup: people.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

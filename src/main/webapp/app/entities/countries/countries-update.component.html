@@ -1,0 +1,134 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-countries-heading" jhiTranslate="resourceApp.countries.home.createOrEditLabel">Create or edit a Countries</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.countries.countryName" for="field_countryName">Country Name</label>
+                    <input type="text" class="form-control" name="countryName" id="field_countryName"
+                           formControlName="countryName"/>
+                    <div *ngIf="editForm.get('countryName').invalid && (editForm.get('countryName').dirty || editForm.get('countryName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('countryName').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.countries.formalName" for="field_formalName">Formal Name</label>
+                    <input type="text" class="form-control" name="formalName" id="field_formalName"
+                           formControlName="formalName"/>
+                    <div *ngIf="editForm.get('formalName').invalid && (editForm.get('formalName').dirty || editForm.get('formalName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('formalName').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.countries.isoAplha3Code" for="field_isoAplha3Code">Iso Aplha 3 Code</label>
+                    <input type="text" class="form-control" name="isoAplha3Code" id="field_isoAplha3Code"
+                           formControlName="isoAplha3Code"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.countries.isoNumericCode" for="field_isoNumericCode">Iso Numeric Code</label>
+                    <input type="number" class="form-control" name="isoNumericCode" id="field_isoNumericCode"
+                           formControlName="isoNumericCode"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.countries.countryType" for="field_countryType">Country Type</label>
+                    <input type="text" class="form-control" name="countryType" id="field_countryType"
+                           formControlName="countryType"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.countries.latestRecordedPopulation" for="field_latestRecordedPopulation">Latest Recorded Population</label>
+                    <input type="number" class="form-control" name="latestRecordedPopulation" id="field_latestRecordedPopulation"
+                           formControlName="latestRecordedPopulation"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.countries.continent" for="field_continent">Continent</label>
+                    <input type="text" class="form-control" name="continent" id="field_continent"
+                           formControlName="continent"/>
+                    <div *ngIf="editForm.get('continent').invalid && (editForm.get('continent').dirty || editForm.get('continent').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('continent').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.countries.region" for="field_region">Region</label>
+                    <input type="text" class="form-control" name="region" id="field_region"
+                           formControlName="region"/>
+                    <div *ngIf="editForm.get('region').invalid && (editForm.get('region').dirty || editForm.get('region').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('region').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.countries.subregion" for="field_subregion">Subregion</label>
+                    <input type="text" class="form-control" name="subregion" id="field_subregion"
+                           formControlName="subregion"/>
+                    <div *ngIf="editForm.get('subregion').invalid && (editForm.get('subregion').dirty || editForm.get('subregion').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('subregion').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.countries.border" for="field_border">Border</label>
+                    <input type="text" class="form-control" name="border" id="field_border"
+                           formControlName="border"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.countries.validFrom" for="field_validFrom">Valid From</label>
+                    <div class="input-group">
+                        <input id="field_validFrom" type="text" class="form-control" name="validFrom" ngbDatepicker  #validFromDp="ngbDatepicker" formControlName="validFrom"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="validFromDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('validFrom').invalid && (editForm.get('validFrom').dirty || editForm.get('validFrom').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('validFrom').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.countries.validTo" for="field_validTo">Valid To</label>
+                    <div class="input-group">
+                        <input id="field_validTo" type="text" class="form-control" name="validTo" ngbDatepicker  #validToDp="ngbDatepicker" formControlName="validTo"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="validToDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('validTo').invalid && (editForm.get('validTo').dirty || editForm.get('validTo').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('validTo').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

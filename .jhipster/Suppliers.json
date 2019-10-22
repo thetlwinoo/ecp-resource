@@ -1,0 +1,147 @@
+{
+    "name": "Suppliers",
+    "fields": [
+        {
+            "fieldName": "supplierName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "supplierReference",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bankAccountName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bankAccountBranch",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bankAccountCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bankAccountNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "bankInternationalCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "paymentDays",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "internalComments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "faxNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "websiteURL",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "webServiceUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "creditRating",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "activeFlag",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "avatar",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "validFrom",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "validTo",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "people",
+            "otherEntityRelationshipName": "suppliers",
+            "relationshipName": "primaryContactPerson",
+            "otherEntityField": "fullName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "people",
+            "otherEntityRelationshipName": "suppliers",
+            "relationshipName": "alternateContactPerson",
+            "otherEntityField": "fullName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "supplierCategories",
+            "otherEntityRelationshipName": "suppliers",
+            "relationshipName": "supplierCategory",
+            "otherEntityField": "supplierCategoryName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "deliveryMethods",
+            "otherEntityRelationshipName": "suppliers",
+            "relationshipName": "deliveryMethod",
+            "otherEntityField": "deliveryMethodName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "cities",
+            "otherEntityRelationshipName": "suppliers",
+            "relationshipName": "deliveryCity",
+            "otherEntityField": "cityName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "cities",
+            "otherEntityRelationshipName": "suppliers",
+            "relationshipName": "postalCity",
+            "otherEntityField": "cityName"
+        }
+    ],
+    "changelogDate": "20191022045319",
+    "entityTableName": "suppliers",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

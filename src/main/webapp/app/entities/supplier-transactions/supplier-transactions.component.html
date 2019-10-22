@@ -1,0 +1,100 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="resourceApp.supplierTransactions.home.title">Supplier Transactions</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-supplier-transactions" [routerLink]="['/supplier-transactions/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="resourceApp.supplierTransactions.home.createLabel">
+            Create a new Supplier Transactions
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="supplierTransactions?.length === 0">
+        <span jhiTranslate="resourceApp.supplierTransactions.home.notFound">No supplierTransactions found</span>
+    </div>
+    <div class="table-responsive" *ngIf="supplierTransactions?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr>
+            <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.supplierInvoiceNumber">Supplier Invoice Number</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.transactionDate">Transaction Date</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.amountExcludingTax">Amount Excluding Tax</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.taxAmount">Tax Amount</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.transactionAmount">Transaction Amount</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.outstandingBalance">Outstanding Balance</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.finalizationDate">Finalization Date</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.isFinalized">Is Finalized</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.lastEditedBy">Last Edited By</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.lastEditedWhen">Last Edited When</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.supplier">Supplier</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.transactionType">Transaction Type</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.purchaseOrder">Purchase Order</span></th>
+            <th scope="col" ><span jhiTranslate="resourceApp.supplierTransactions.paymentMethod">Payment Method</span></th>
+            <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let supplierTransactions of supplierTransactions ;trackBy: trackId">
+                <td><a [routerLink]="['/supplier-transactions', supplierTransactions.id, 'view' ]">{{supplierTransactions.id}}</a></td>
+                <td>{{supplierTransactions.supplierInvoiceNumber}}</td>
+                <td>{{supplierTransactions.transactionDate | date:'mediumDate'}}</td>
+                <td>{{supplierTransactions.amountExcludingTax}}</td>
+                <td>{{supplierTransactions.taxAmount}}</td>
+                <td>{{supplierTransactions.transactionAmount}}</td>
+                <td>{{supplierTransactions.outstandingBalance}}</td>
+                <td>{{supplierTransactions.finalizationDate | date:'mediumDate'}}</td>
+                <td>{{supplierTransactions.isFinalized}}</td>
+                <td>{{supplierTransactions.lastEditedBy}}</td>
+                <td>{{supplierTransactions.lastEditedWhen | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="supplierTransactions.supplierId">
+                        <a [routerLink]="['/suppliers', supplierTransactions.supplierId , 'view' ]" >{{supplierTransactions.supplierSupplierName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="supplierTransactions.transactionTypeId">
+                        <a [routerLink]="['/transaction-types', supplierTransactions.transactionTypeId , 'view' ]" >{{supplierTransactions.transactionTypeTransactionTypeName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="supplierTransactions.purchaseOrderId">
+                        <a [routerLink]="['/purchase-orders', supplierTransactions.purchaseOrderId , 'view' ]" >{{supplierTransactions.purchaseOrderId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="supplierTransactions.paymentMethodId">
+                        <a [routerLink]="['/payment-methods', supplierTransactions.paymentMethodId , 'view' ]" >{{supplierTransactions.paymentMethodPaymentMethodName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/supplier-transactions', supplierTransactions.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/supplier-transactions', supplierTransactions.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/supplier-transactions', { outlets: { popup: supplierTransactions.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

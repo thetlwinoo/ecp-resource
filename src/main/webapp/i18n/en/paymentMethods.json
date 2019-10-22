@@ -1,0 +1,25 @@
+{
+  "resourceApp": {
+    "paymentMethods": {
+      "home": {
+        "title": "Payment Methods",
+        "createLabel": "Create a new Payment Methods",
+        "createOrEditLabel": "Create or edit a Payment Methods",
+        "notFound": "No Payment Methods found"
+      },
+      "created": "A new Payment Methods is created with identifier {{ param }}",
+      "updated": "A Payment Methods is updated with identifier {{ param }}",
+      "deleted": "A Payment Methods is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Payment Methods {{ id }}?"
+      },
+      "detail": {
+        "title": "Payment Methods"
+      },
+      "paymentMethodName": "Payment Method Name",
+      "activeInd": "Active Ind",
+      "validFrom": "Valid From",
+      "validTo": "Valid To"
+    }
+  }
+}

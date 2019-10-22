@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Suppliers.
+    -->
+    <changeSet id="20191022045319-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="primary_contact_person_id"
+                                 baseTableName="suppliers"
+                                 constraintName="fk_suppliers_primary_contact_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="people"/>
+
+        <addForeignKeyConstraint baseColumnNames="alternate_contact_person_id"
+                                 baseTableName="suppliers"
+                                 constraintName="fk_suppliers_alternate_contact_person_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="people"/>
+
+        <addForeignKeyConstraint baseColumnNames="supplier_category_id"
+                                 baseTableName="suppliers"
+                                 constraintName="fk_suppliers_supplier_category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="supplier_categories"/>
+
+        <addForeignKeyConstraint baseColumnNames="delivery_method_id"
+                                 baseTableName="suppliers"
+                                 constraintName="fk_suppliers_delivery_method_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="delivery_methods"/>
+
+        <addForeignKeyConstraint baseColumnNames="delivery_city_id"
+                                 baseTableName="suppliers"
+                                 constraintName="fk_suppliers_delivery_city_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cities"/>
+
+        <addForeignKeyConstraint baseColumnNames="postal_city_id"
+                                 baseTableName="suppliers"
+                                 constraintName="fk_suppliers_postal_city_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cities"/>
+
+    </changeSet>
+</databaseChangeLog>

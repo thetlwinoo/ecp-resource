@@ -1,0 +1,266 @@
+{
+    "name": "StockItems",
+    "fields": [
+        {
+            "fieldName": "stockItemName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "vendorCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "vendorSKU",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "generatedSKU",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "barcode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "unitPrice",
+            "fieldType": "Float",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "recommendedRetailPrice",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "quantityOnHand",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "itemLength",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "itemWidth",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "itemHeight",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "itemWeight",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "itemPackageLength",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "itemPackageWidth",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "itemPackageHeight",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "itemPackageWeight",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "noOfPieces",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "noOfItems",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "manufacture",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "marketingComments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "internalComments",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sellStartDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "sellEndDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "sellCount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "customFields",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "thumbnailUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "activeInd",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "lastEditedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastEditedWhen",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "reviewLines",
+            "otherEntityRelationshipName": "stockItem",
+            "relationshipName": "stockItemOnReviewLine",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "photos",
+            "otherEntityRelationshipName": "stockItem",
+            "relationshipName": "photoList"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "dangerousGoods",
+            "otherEntityRelationshipName": "stockItem",
+            "relationshipName": "dangerousGoodList"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "specialDeals",
+            "otherEntityRelationshipName": "stockItem",
+            "relationshipName": "specialDiscount"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "unitMeasure",
+            "otherEntityRelationshipName": "stockItems",
+            "relationshipName": "itemLengthUnit",
+            "otherEntityField": "unitMeasureCode"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "unitMeasure",
+            "otherEntityRelationshipName": "stockItems",
+            "relationshipName": "itemWidthUnit",
+            "otherEntityField": "unitMeasureCode"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "unitMeasure",
+            "otherEntityRelationshipName": "stockItems",
+            "relationshipName": "itemHeightUnit",
+            "otherEntityField": "unitMeasureCode"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "unitMeasure",
+            "otherEntityRelationshipName": "stockItems",
+            "relationshipName": "packageLengthUnit",
+            "otherEntityField": "unitMeasureCode"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "unitMeasure",
+            "otherEntityRelationshipName": "stockItems",
+            "relationshipName": "packageWidthUnit",
+            "otherEntityField": "unitMeasureCode"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "unitMeasure",
+            "otherEntityRelationshipName": "stockItems",
+            "relationshipName": "packageHeightUnit",
+            "otherEntityField": "unitMeasureCode"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "unitMeasure",
+            "otherEntityRelationshipName": "stockItems",
+            "relationshipName": "itemPackageWeightUnit",
+            "otherEntityField": "unitMeasureCode"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "productAttribute",
+            "otherEntityRelationshipName": "stockItems",
+            "relationshipName": "productAttribute",
+            "otherEntityField": "productAttributeValue"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "productOption",
+            "otherEntityRelationshipName": "stockItems",
+            "relationshipName": "productOption",
+            "otherEntityField": "productOptionValue"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "materials",
+            "otherEntityRelationshipName": "stockItems",
+            "relationshipName": "material",
+            "otherEntityField": "materialName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "currency",
+            "otherEntityRelationshipName": "stockItems",
+            "relationshipName": "currency",
+            "otherEntityField": "currencyCode"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "barcodeTypes",
+            "otherEntityRelationshipName": "stockItems",
+            "relationshipName": "barcodeType",
+            "otherEntityField": "barcodeTypeName"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "stockItemHoldings",
+            "otherEntityRelationshipName": "stockItemHoldingOnStockItem",
+            "relationshipName": "stockItemHolding",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "products",
+            "otherEntityRelationshipName": "stockItemList",
+            "relationshipName": "product",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191022045338",
+    "entityTableName": "stock_items",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

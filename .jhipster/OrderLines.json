@@ -1,0 +1,81 @@
+{
+    "name": "OrderLines",
+    "fields": [
+        {
+            "fieldName": "carrierTrackingNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "quantity",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "unitPrice",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "unitPriceDiscount",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "lineTotal",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "taxRate",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "pickedQuantity",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "pickingCompletedWhen",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "lastEditedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastEditedWhen",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "stockItems",
+            "otherEntityRelationshipName": "orderLines",
+            "relationshipName": "stockItem",
+            "otherEntityField": "stockItemName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "packageTypes",
+            "otherEntityRelationshipName": "orderLines",
+            "relationshipName": "packageType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "orders",
+            "otherEntityRelationshipName": "orderLineList",
+            "relationshipName": "order",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191022045331",
+    "entityTableName": "order_lines",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

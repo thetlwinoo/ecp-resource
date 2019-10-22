@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="transactionTypes">
+            <h2><span jhiTranslate="resourceApp.transactionTypes.detail.title">Transaction Types</span> {{transactionTypes.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="resourceApp.transactionTypes.transactionTypeName">Transaction Type Name</span></dt>
+                <dd>
+                    <span>{{transactionTypes.transactionTypeName}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.transactionTypes.validFrom">Valid From</span></dt>
+                <dd>
+                    <span>{{transactionTypes.validFrom}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.transactionTypes.validTo">Valid To</span></dt>
+                <dd>
+                    <span>{{transactionTypes.validTo}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/transaction-types', transactionTypes.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

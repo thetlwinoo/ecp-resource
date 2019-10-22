@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="productCategory">
+            <h2><span jhiTranslate="resourceApp.productCategory.detail.title">Product Category</span> {{productCategory.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="resourceApp.productCategory.name">Name</span></dt>
+                <dd>
+                    <span>{{productCategory.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.productCategory.label">Label</span></dt>
+                <dd>
+                    <span>{{productCategory.label}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.productCategory.photo">Photo</span></dt>
+                <dd>
+                    <div *ngIf="productCategory.photo">
+                        <a (click)="openFile(productCategory.photoContentType, productCategory.photo)">
+                            <img [src]="'data:' + productCategory.photoContentType + ';base64,' + productCategory.photo" style="max-width: 100%;" alt="productCategory image"/>
+                        </a>
+                        {{productCategory.photoContentType}}, {{byteSize(productCategory.photo)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.productCategory.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="productCategory.parentId">
+                        <a [routerLink]="['/product-category', productCategory.parentId, 'view']">{{productCategory.parentName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/product-category', productCategory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

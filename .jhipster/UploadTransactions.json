@@ -1,0 +1,67 @@
+{
+    "name": "UploadTransactions",
+    "fields": [
+        {
+            "fieldName": "fileName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "templateUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "generatedCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastEditedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastEditedWhen",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "supplierImportedDocument",
+            "otherEntityRelationshipName": "uploadTransaction",
+            "relationshipName": "importDocumentList"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "stockItemTemp",
+            "otherEntityRelationshipName": "uploadTransaction",
+            "relationshipName": "stockItemTempList"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "suppliers",
+            "otherEntityRelationshipName": "uploadTransactions",
+            "relationshipName": "supplier",
+            "otherEntityField": "supplierName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "uploadActionTypes",
+            "otherEntityRelationshipName": "uploadTransactions",
+            "relationshipName": "actionType",
+            "otherEntityField": "actionTypeName"
+        }
+    ],
+    "changelogDate": "20191022045340",
+    "entityTableName": "upload_transactions",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

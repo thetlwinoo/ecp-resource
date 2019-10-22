@@ -1,0 +1,102 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-products-heading" jhiTranslate="resourceApp.products.home.createOrEditLabel">Create or edit a Products</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.products.productName" for="field_productName">Product Name</label>
+                    <input type="text" class="form-control" name="productName" id="field_productName"
+                           formControlName="productName"/>
+                    <div *ngIf="editForm.get('productName').invalid && (editForm.get('productName').dirty || editForm.get('productName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('productName').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.products.handle" for="field_handle">Handle</label>
+                    <input type="text" class="form-control" name="handle" id="field_handle"
+                           formControlName="handle"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.products.productNumber" for="field_productNumber">Product Number</label>
+                    <input type="text" class="form-control" name="productNumber" id="field_productNumber"
+                           formControlName="productNumber"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.products.searchDetails" for="field_searchDetails">Search Details</label>
+                    <textarea class="form-control" name="searchDetails" id="field_searchDetails"
+                              formControlName="searchDetails"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.products.sellCount" for="field_sellCount">Sell Count</label>
+                    <input type="number" class="form-control" name="sellCount" id="field_sellCount"
+                           formControlName="sellCount"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.products.activeInd" for="field_activeInd">Active Ind</label>
+                    <input type="checkbox" class="form-control" name="activeInd" id="field_activeInd"
+                           formControlName="activeInd"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.products.lastEditedBy" for="field_lastEditedBy">Last Edited By</label>
+                    <input type="text" class="form-control" name="lastEditedBy" id="field_lastEditedBy"
+                           formControlName="lastEditedBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.products.lastEditedWhen" for="field_lastEditedWhen">Last Edited When</label>
+                    <div class="input-group">
+                        <input id="field_lastEditedWhen" type="text" class="form-control" name="lastEditedWhen" ngbDatepicker  #lastEditedWhenDp="ngbDatepicker" formControlName="lastEditedWhen"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="lastEditedWhenDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.products.document" for="field_document">Document</label>
+                    <select class="form-control" id="field_document" name="document" formControlName="documentId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="productDocumentOption.id" *ngFor="let productDocumentOption of documents; trackBy: trackProductDocumentById">{{productDocumentOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.products.supplier" for="field_supplier">Supplier</label>
+                    <select class="form-control" id="field_supplier" name="supplier" formControlName="supplierId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="suppliersOption.id" *ngFor="let suppliersOption of suppliers; trackBy: trackSuppliersById">{{suppliersOption.supplierName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.products.productCategory" for="field_productCategory">Product Category</label>
+                    <select class="form-control" id="field_productCategory" name="productCategory" formControlName="productCategoryId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="productCategoryOption.id" *ngFor="let productCategoryOption of productcategories; trackBy: trackProductCategoryById">{{productCategoryOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.products.productBrand" for="field_productBrand">Product Brand</label>
+                    <select class="form-control" id="field_productBrand" name="productBrand" formControlName="productBrandId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="productBrandOption.id" *ngFor="let productBrandOption of productbrands; trackBy: trackProductBrandById">{{productBrandOption.productBrandName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

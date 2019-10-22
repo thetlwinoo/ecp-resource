@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="stateProvinces">
+            <h2><span jhiTranslate="resourceApp.stateProvinces.detail.title">State Provinces</span> {{stateProvinces.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="resourceApp.stateProvinces.stateProvinceCode">State Province Code</span></dt>
+                <dd>
+                    <span>{{stateProvinces.stateProvinceCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.stateProvinces.stateProvinceName">State Province Name</span></dt>
+                <dd>
+                    <span>{{stateProvinces.stateProvinceName}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.stateProvinces.salesTerritory">Sales Territory</span></dt>
+                <dd>
+                    <span>{{stateProvinces.salesTerritory}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.stateProvinces.border">Border</span></dt>
+                <dd>
+                    <span>{{stateProvinces.border}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.stateProvinces.latestRecordedPopulation">Latest Recorded Population</span></dt>
+                <dd>
+                    <span>{{stateProvinces.latestRecordedPopulation}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.stateProvinces.validFrom">Valid From</span></dt>
+                <dd>
+                    <span>{{stateProvinces.validFrom}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.stateProvinces.validTo">Valid To</span></dt>
+                <dd>
+                    <span>{{stateProvinces.validTo}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.stateProvinces.country">Country</span></dt>
+                <dd>
+                    <div *ngIf="stateProvinces.countryId">
+                        <a [routerLink]="['/countries', stateProvinces.countryId, 'view']">{{stateProvinces.countryCountryName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/state-provinces', stateProvinces.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

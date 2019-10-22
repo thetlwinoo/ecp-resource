@@ -1,0 +1,25 @@
+{
+  "resourceApp": {
+    "paymentMethods": {
+      "home": {
+        "title": "Payment Methods",
+        "createLabel": "Payment Methods အသစ်ထည့်မည်",
+        "createOrEditLabel": "Payment Methods အသစ်ထည့်ခြင်း (သို့) ပြုပြင်ခြင်း",
+        "notFound": "No Payment Methods found"
+      },
+      "created": "{{ param }} အိုင်ဒီဖြင့် Payment Methods အသစ်တစ်ခုအား ထည့်ပြီးပါပြီ။",
+      "updated": "{{ param }} အိုင်ဒီဖြင့် Payment Methods တစ်ခုအား ပြုပြင်ပြီးပါပြီ။",
+      "deleted": "{{ param }} အိုင်ဒီဖြင့် Payment Methods တစ်ခုအား ဖျက်ပြီးပါပြီ။",
+      "delete": {
+        "question": "Payment Methods {{ id }} အား ဖျက်ပါမည်။ သေချာပါသလား?"
+      },
+      "detail": {
+        "title": "Payment Methods"
+      },
+      "paymentMethodName": "Payment Method Name",
+      "activeInd": "Active Ind",
+      "validFrom": "Valid From",
+      "validTo": "Valid To"
+    }
+  }
+}

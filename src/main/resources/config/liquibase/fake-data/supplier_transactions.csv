@@ -1,0 +1,11 @@
+id;supplier_invoice_number;transaction_date;amount_excluding_tax;tax_amount;transaction_amount;outstanding_balance;finalization_date;is_finalized;last_edited_by;last_edited_when
+1;collaboration Aruban Guilder;2019-10-21;37847;66183;36294;55778;2019-10-21;true;Hill Awesome Rubber Computer;2019-10-21
+2;Tuna El Salvador Colon US Dollar mint green;2019-10-21;40947;9667;42268;45037;2019-10-21;true;B2C;2019-10-21
+3;online Markets Cross-group;2019-10-21;97416;15241;2002;99248;2019-10-21;true;Dominican Republic quantifying Benin;2019-10-21
+4;Licensed;2019-10-21;86468;12771;60848;82606;2019-10-21;true;protocol;2019-10-22
+5;contingency;2019-10-21;34167;36013;38090;8764;2019-10-21;true;Lithuania;2019-10-21
+6;morph Village Auto Loan Account;2019-10-21;16176;91939;78627;49696;2019-10-21;true;navigating tan;2019-10-21
+7;Granite quantifying;2019-10-21;67430;87797;53248;86805;2019-10-21;true;digital;2019-10-21
+8;Incredible utilize Keyboard;2019-10-21;22361;34609;95732;97561;2019-10-21;true;generating Granite FTP;2019-10-21
+9;Avon Personal Loan Account;2019-10-21;82933;17483;31753;50256;2019-10-21;false;Metal leading-edge Sleek Steel Hat;2019-10-22
+10;Associate;2019-10-21;77672;96582;12203;43249;2019-10-21;false;Cambridgeshire solutions Refined;2019-10-21

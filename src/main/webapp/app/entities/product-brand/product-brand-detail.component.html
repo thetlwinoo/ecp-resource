@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="productBrand">
+            <h2><span jhiTranslate="resourceApp.productBrand.detail.title">Product Brand</span> {{productBrand.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="resourceApp.productBrand.productBrandName">Product Brand Name</span></dt>
+                <dd>
+                    <span>{{productBrand.productBrandName}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.productBrand.photo">Photo</span></dt>
+                <dd>
+                    <div *ngIf="productBrand.photo">
+                        <a (click)="openFile(productBrand.photoContentType, productBrand.photo)">
+                            <img [src]="'data:' + productBrand.photoContentType + ';base64,' + productBrand.photo" style="max-width: 100%;" alt="productBrand image"/>
+                        </a>
+                        {{productBrand.photoContentType}}, {{byteSize(productBrand.photo)}}
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/product-brand', productBrand.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-unit-measure-heading" jhiTranslate="resourceApp.unitMeasure.home.createOrEditLabel">Create or edit a Unit Measure</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.unitMeasure.unitMeasureCode" for="field_unitMeasureCode">Unit Measure Code</label>
+                    <input type="text" class="form-control" name="unitMeasureCode" id="field_unitMeasureCode"
+                           formControlName="unitMeasureCode"/>
+                    <div *ngIf="editForm.get('unitMeasureCode').invalid && (editForm.get('unitMeasureCode').dirty || editForm.get('unitMeasureCode').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('unitMeasureCode').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.unitMeasure.unitMeasureName" for="field_unitMeasureName">Unit Measure Name</label>
+                    <input type="text" class="form-control" name="unitMeasureName" id="field_unitMeasureName"
+                           formControlName="unitMeasureName"/>
+                    <div *ngIf="editForm.get('unitMeasureName').invalid && (editForm.get('unitMeasureName').dirty || editForm.get('unitMeasureName').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('unitMeasureName').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,103 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-purchase-orders-heading" jhiTranslate="resourceApp.purchaseOrders.home.createOrEditLabel">Create or edit a Purchase Orders</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrders.orderDate" for="field_orderDate">Order Date</label>
+                    <div class="input-group">
+                        <input id="field_orderDate" type="text" class="form-control" name="orderDate" ngbDatepicker  #orderDateDp="ngbDatepicker" formControlName="orderDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="orderDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('orderDate').invalid && (editForm.get('orderDate').dirty || editForm.get('orderDate').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('orderDate').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrders.expectedDeliveryDate" for="field_expectedDeliveryDate">Expected Delivery Date</label>
+                    <div class="input-group">
+                        <input id="field_expectedDeliveryDate" type="text" class="form-control" name="expectedDeliveryDate" ngbDatepicker  #expectedDeliveryDateDp="ngbDatepicker" formControlName="expectedDeliveryDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="expectedDeliveryDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrders.supplierReference" for="field_supplierReference">Supplier Reference</label>
+                    <input type="text" class="form-control" name="supplierReference" id="field_supplierReference"
+                           formControlName="supplierReference"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrders.isOrderFinalized" for="field_isOrderFinalized">Is Order Finalized</label>
+                    <input type="checkbox" class="form-control" name="isOrderFinalized" id="field_isOrderFinalized"
+                           formControlName="isOrderFinalized"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrders.comments" for="field_comments">Comments</label>
+                    <input type="text" class="form-control" name="comments" id="field_comments"
+                           formControlName="comments"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrders.internalComments" for="field_internalComments">Internal Comments</label>
+                    <input type="text" class="form-control" name="internalComments" id="field_internalComments"
+                           formControlName="internalComments"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrders.lastEditedBy" for="field_lastEditedBy">Last Edited By</label>
+                    <input type="text" class="form-control" name="lastEditedBy" id="field_lastEditedBy"
+                           formControlName="lastEditedBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrders.lastEditedWhen" for="field_lastEditedWhen">Last Edited When</label>
+                    <div class="input-group">
+                        <input id="field_lastEditedWhen" type="text" class="form-control" name="lastEditedWhen" ngbDatepicker  #lastEditedWhenDp="ngbDatepicker" formControlName="lastEditedWhen"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="lastEditedWhenDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrders.contactPerson" for="field_contactPerson">Contact Person</label>
+                    <select class="form-control" id="field_contactPerson" name="contactPerson" formControlName="contactPersonId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="peopleOption.id" *ngFor="let peopleOption of people; trackBy: trackPeopleById">{{peopleOption.fullName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrders.supplier" for="field_supplier">Supplier</label>
+                    <select class="form-control" id="field_supplier" name="supplier" formControlName="supplierId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="suppliersOption.id" *ngFor="let suppliersOption of suppliers; trackBy: trackSuppliersById">{{suppliersOption.supplierName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrders.deliveryMethod" for="field_deliveryMethod">Delivery Method</label>
+                    <select class="form-control" id="field_deliveryMethod" name="deliveryMethod" formControlName="deliveryMethodId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="deliveryMethodsOption.id" *ngFor="let deliveryMethodsOption of deliverymethods; trackBy: trackDeliveryMethodsById">{{deliveryMethodsOption.deliveryMethodName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

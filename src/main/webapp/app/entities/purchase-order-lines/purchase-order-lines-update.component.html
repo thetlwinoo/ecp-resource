@@ -1,0 +1,103 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-purchase-order-lines-heading" jhiTranslate="resourceApp.purchaseOrderLines.home.createOrEditLabel">Create or edit a Purchase Order Lines</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrderLines.ordersOuters" for="field_ordersOuters">Orders Outers</label>
+                    <input type="number" class="form-control" name="ordersOuters" id="field_ordersOuters"
+                           formControlName="ordersOuters"/>
+                    <div *ngIf="editForm.get('ordersOuters').invalid && (editForm.get('ordersOuters').dirty || editForm.get('ordersOuters').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('ordersOuters').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('ordersOuters')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrderLines.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrderLines.receivedOuters" for="field_receivedOuters">Received Outers</label>
+                    <input type="number" class="form-control" name="receivedOuters" id="field_receivedOuters"
+                           formControlName="receivedOuters"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrderLines.expectedUnitPricePerOuter" for="field_expectedUnitPricePerOuter">Expected Unit Price Per Outer</label>
+                    <input type="number" class="form-control" name="expectedUnitPricePerOuter" id="field_expectedUnitPricePerOuter"
+                           formControlName="expectedUnitPricePerOuter"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrderLines.lastReceiptDate" for="field_lastReceiptDate">Last Receipt Date</label>
+                    <div class="input-group">
+                        <input id="field_lastReceiptDate" type="text" class="form-control" name="lastReceiptDate" ngbDatepicker  #lastReceiptDateDp="ngbDatepicker" formControlName="lastReceiptDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="lastReceiptDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrderLines.isOrderLineFinalized" for="field_isOrderLineFinalized">Is Order Line Finalized</label>
+                    <input type="checkbox" class="form-control" name="isOrderLineFinalized" id="field_isOrderLineFinalized"
+                           formControlName="isOrderLineFinalized"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrderLines.lastEditedBy" for="field_lastEditedBy">Last Edited By</label>
+                    <input type="text" class="form-control" name="lastEditedBy" id="field_lastEditedBy"
+                           formControlName="lastEditedBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrderLines.lastEditedWhen" for="field_lastEditedWhen">Last Edited When</label>
+                    <div class="input-group">
+                        <input id="field_lastEditedWhen" type="text" class="form-control" name="lastEditedWhen" ngbDatepicker  #lastEditedWhenDp="ngbDatepicker" formControlName="lastEditedWhen"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="lastEditedWhenDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrderLines.packageType" for="field_packageType">Package Type</label>
+                    <select class="form-control" id="field_packageType" name="packageType" formControlName="packageTypeId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="packageTypesOption.id" *ngFor="let packageTypesOption of packagetypes; trackBy: trackPackageTypesById">{{packageTypesOption.packageTypeName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrderLines.stockItem" for="field_stockItem">Stock Item</label>
+                    <select class="form-control" id="field_stockItem" name="stockItem" formControlName="stockItemId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="stockItemsOption.id" *ngFor="let stockItemsOption of stockitems; trackBy: trackStockItemsById">{{stockItemsOption.stockItemName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.purchaseOrderLines.purchaseOrder" for="field_purchaseOrder">Purchase Order</label>
+                    <select class="form-control" id="field_purchaseOrder" name="purchaseOrder" formControlName="purchaseOrderId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="purchaseOrdersOption.id" *ngFor="let purchaseOrdersOption of purchaseorders; trackBy: trackPurchaseOrdersById">{{purchaseOrdersOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,179 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-orders-heading" jhiTranslate="resourceApp.orders.home.createOrEditLabel">Create or edit a Orders</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.orderDate" for="field_orderDate">Order Date</label>
+                    <div class="input-group">
+                        <input id="field_orderDate" type="text" class="form-control" name="orderDate" ngbDatepicker  #orderDateDp="ngbDatepicker" formControlName="orderDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="orderDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('orderDate').invalid && (editForm.get('orderDate').dirty || editForm.get('orderDate').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('orderDate').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.dueDate" for="field_dueDate">Due Date</label>
+                    <div class="input-group">
+                        <input id="field_dueDate" type="text" class="form-control" name="dueDate" ngbDatepicker  #dueDateDp="ngbDatepicker" formControlName="dueDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dueDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.shipDate" for="field_shipDate">Ship Date</label>
+                    <div class="input-group">
+                        <input id="field_shipDate" type="text" class="form-control" name="shipDate" ngbDatepicker  #shipDateDp="ngbDatepicker" formControlName="shipDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="shipDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.paymentStatus" for="field_paymentStatus">Payment Status</label>
+                    <input type="number" class="form-control" name="paymentStatus" id="field_paymentStatus"
+                           formControlName="paymentStatus"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.orderFlag" for="field_orderFlag">Order Flag</label>
+                    <input type="number" class="form-control" name="orderFlag" id="field_orderFlag"
+                           formControlName="orderFlag"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.orderNumber" for="field_orderNumber">Order Number</label>
+                    <input type="text" class="form-control" name="orderNumber" id="field_orderNumber"
+                           formControlName="orderNumber"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.subTotal" for="field_subTotal">Sub Total</label>
+                    <input type="number" class="form-control" name="subTotal" id="field_subTotal"
+                           formControlName="subTotal"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.taxAmount" for="field_taxAmount">Tax Amount</label>
+                    <input type="number" class="form-control" name="taxAmount" id="field_taxAmount"
+                           formControlName="taxAmount"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.frieight" for="field_frieight">Frieight</label>
+                    <input type="number" class="form-control" name="frieight" id="field_frieight"
+                           formControlName="frieight"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.totalDue" for="field_totalDue">Total Due</label>
+                    <input type="number" class="form-control" name="totalDue" id="field_totalDue"
+                           formControlName="totalDue"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.comments" for="field_comments">Comments</label>
+                    <input type="text" class="form-control" name="comments" id="field_comments"
+                           formControlName="comments"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.deliveryInstructions" for="field_deliveryInstructions">Delivery Instructions</label>
+                    <input type="text" class="form-control" name="deliveryInstructions" id="field_deliveryInstructions"
+                           formControlName="deliveryInstructions"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.internalComments" for="field_internalComments">Internal Comments</label>
+                    <input type="text" class="form-control" name="internalComments" id="field_internalComments"
+                           formControlName="internalComments"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.pickingCompletedWhen" for="field_pickingCompletedWhen">Picking Completed When</label>
+                    <div class="input-group">
+                        <input id="field_pickingCompletedWhen" type="text" class="form-control" name="pickingCompletedWhen" ngbDatepicker  #pickingCompletedWhenDp="ngbDatepicker" formControlName="pickingCompletedWhen"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="pickingCompletedWhenDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.lastEditedBy" for="field_lastEditedBy">Last Edited By</label>
+                    <input type="text" class="form-control" name="lastEditedBy" id="field_lastEditedBy"
+                           formControlName="lastEditedBy"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.lastEditedWhen" for="field_lastEditedWhen">Last Edited When</label>
+                    <div class="input-group">
+                        <input id="field_lastEditedWhen" type="text" class="form-control" name="lastEditedWhen" ngbDatepicker  #lastEditedWhenDp="ngbDatepicker" formControlName="lastEditedWhen"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="lastEditedWhenDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.orderOnReview" for="field_orderOnReview">Order On Review</label>
+                    <select class="form-control" id="field_orderOnReview" name="orderOnReview" formControlName="orderOnReviewId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="reviewsOption.id" *ngFor="let reviewsOption of orderonreviews; trackBy: trackReviewsById">{{reviewsOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.customer" for="field_customer">Customer</label>
+                    <select class="form-control" id="field_customer" name="customer" formControlName="customerId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="customersOption.id" *ngFor="let customersOption of customers; trackBy: trackCustomersById">{{customersOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.shipToAddress" for="field_shipToAddress">Ship To Address</label>
+                    <select class="form-control" id="field_shipToAddress" name="shipToAddress" formControlName="shipToAddressId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="addressesOption.id" *ngFor="let addressesOption of addresses; trackBy: trackAddressesById">{{addressesOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.billToAddress" for="field_billToAddress">Bill To Address</label>
+                    <select class="form-control" id="field_billToAddress" name="billToAddress" formControlName="billToAddressId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="addressesOption.id" *ngFor="let addressesOption of addresses; trackBy: trackAddressesById">{{addressesOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.shipMethod" for="field_shipMethod">Ship Method</label>
+                    <select class="form-control" id="field_shipMethod" name="shipMethod" formControlName="shipMethodId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="shipMethodOption.id" *ngFor="let shipMethodOption of shipmethods; trackBy: trackShipMethodById">{{shipMethodOption.shipMethodName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.currencyRate" for="field_currencyRate">Currency Rate</label>
+                    <select class="form-control" id="field_currencyRate" name="currencyRate" formControlName="currencyRateId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="currencyRateOption.id" *ngFor="let currencyRateOption of currencyrates; trackBy: trackCurrencyRateById">{{currencyRateOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="resourceApp.orders.specialDeals" for="field_specialDeals">Special Deals</label>
+                    <select class="form-control" id="field_specialDeals" name="specialDeals" formControlName="specialDealsId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="specialDealsOption.id" *ngFor="let specialDealsOption of specialdeals; trackBy: trackSpecialDealsById">{{specialDealsOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

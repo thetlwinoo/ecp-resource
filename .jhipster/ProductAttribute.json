@@ -1,0 +1,38 @@
+{
+    "name": "ProductAttribute",
+    "fields": [
+        {
+            "fieldName": "productAttributeValue",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "productAttributeSet",
+            "otherEntityRelationshipName": "productAttribute",
+            "relationshipName": "productAttributeSet",
+            "otherEntityField": "productAttributeSetName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "suppliers",
+            "otherEntityRelationshipName": "productAttribute",
+            "relationshipName": "supplier",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191022045345",
+    "entityTableName": "product_attribute",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

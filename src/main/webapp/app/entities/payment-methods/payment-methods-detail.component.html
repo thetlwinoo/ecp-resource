@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="paymentMethods">
+            <h2><span jhiTranslate="resourceApp.paymentMethods.detail.title">Payment Methods</span> {{paymentMethods.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="resourceApp.paymentMethods.paymentMethodName">Payment Method Name</span></dt>
+                <dd>
+                    <span>{{paymentMethods.paymentMethodName}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.paymentMethods.activeInd">Active Ind</span></dt>
+                <dd>
+                    <span>{{paymentMethods.activeInd}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.paymentMethods.validFrom">Valid From</span></dt>
+                <dd>
+                    <span>{{paymentMethods.validFrom}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.paymentMethods.validTo">Valid To</span></dt>
+                <dd>
+                    <span>{{paymentMethods.validTo}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/payment-methods', paymentMethods.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

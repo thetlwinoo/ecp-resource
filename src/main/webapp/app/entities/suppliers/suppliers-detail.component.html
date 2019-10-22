@@ -1,0 +1,136 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="suppliers">
+            <h2><span jhiTranslate="resourceApp.suppliers.detail.title">Suppliers</span> {{suppliers.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="resourceApp.suppliers.supplierName">Supplier Name</span></dt>
+                <dd>
+                    <span>{{suppliers.supplierName}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.supplierReference">Supplier Reference</span></dt>
+                <dd>
+                    <span>{{suppliers.supplierReference}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.bankAccountName">Bank Account Name</span></dt>
+                <dd>
+                    <span>{{suppliers.bankAccountName}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.bankAccountBranch">Bank Account Branch</span></dt>
+                <dd>
+                    <span>{{suppliers.bankAccountBranch}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.bankAccountCode">Bank Account Code</span></dt>
+                <dd>
+                    <span>{{suppliers.bankAccountCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.bankAccountNumber">Bank Account Number</span></dt>
+                <dd>
+                    <span>{{suppliers.bankAccountNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.bankInternationalCode">Bank International Code</span></dt>
+                <dd>
+                    <span>{{suppliers.bankInternationalCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.paymentDays">Payment Days</span></dt>
+                <dd>
+                    <span>{{suppliers.paymentDays}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.internalComments">Internal Comments</span></dt>
+                <dd>
+                    <span>{{suppliers.internalComments}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.phoneNumber">Phone Number</span></dt>
+                <dd>
+                    <span>{{suppliers.phoneNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.faxNumber">Fax Number</span></dt>
+                <dd>
+                    <span>{{suppliers.faxNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.websiteURL">Website URL</span></dt>
+                <dd>
+                    <span>{{suppliers.websiteURL}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.webServiceUrl">Web Service Url</span></dt>
+                <dd>
+                    <span>{{suppliers.webServiceUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.creditRating">Credit Rating</span></dt>
+                <dd>
+                    <span>{{suppliers.creditRating}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.activeFlag">Active Flag</span></dt>
+                <dd>
+                    <span>{{suppliers.activeFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.avatar">Avatar</span></dt>
+                <dd>
+                    <div *ngIf="suppliers.avatar">
+                        <a (click)="openFile(suppliers.avatarContentType, suppliers.avatar)">
+                            <img [src]="'data:' + suppliers.avatarContentType + ';base64,' + suppliers.avatar" style="max-width: 100%;" alt="suppliers image"/>
+                        </a>
+                        {{suppliers.avatarContentType}}, {{byteSize(suppliers.avatar)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.validFrom">Valid From</span></dt>
+                <dd>
+                    <span>{{suppliers.validFrom}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.validTo">Valid To</span></dt>
+                <dd>
+                    <span>{{suppliers.validTo}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.primaryContactPerson">Primary Contact Person</span></dt>
+                <dd>
+                    <div *ngIf="suppliers.primaryContactPersonId">
+                        <a [routerLink]="['/people', suppliers.primaryContactPersonId, 'view']">{{suppliers.primaryContactPersonFullName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.alternateContactPerson">Alternate Contact Person</span></dt>
+                <dd>
+                    <div *ngIf="suppliers.alternateContactPersonId">
+                        <a [routerLink]="['/people', suppliers.alternateContactPersonId, 'view']">{{suppliers.alternateContactPersonFullName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.supplierCategory">Supplier Category</span></dt>
+                <dd>
+                    <div *ngIf="suppliers.supplierCategoryId">
+                        <a [routerLink]="['/supplier-categories', suppliers.supplierCategoryId, 'view']">{{suppliers.supplierCategorySupplierCategoryName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.deliveryMethod">Delivery Method</span></dt>
+                <dd>
+                    <div *ngIf="suppliers.deliveryMethodId">
+                        <a [routerLink]="['/delivery-methods', suppliers.deliveryMethodId, 'view']">{{suppliers.deliveryMethodDeliveryMethodName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.deliveryCity">Delivery City</span></dt>
+                <dd>
+                    <div *ngIf="suppliers.deliveryCityId">
+                        <a [routerLink]="['/cities', suppliers.deliveryCityId, 'view']">{{suppliers.deliveryCityCityName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.suppliers.postalCity">Postal City</span></dt>
+                <dd>
+                    <div *ngIf="suppliers.postalCityId">
+                        <a [routerLink]="['/cities', suppliers.postalCityId, 'view']">{{suppliers.postalCityCityName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/suppliers', suppliers.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

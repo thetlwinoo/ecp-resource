@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="products">
+            <h2><span jhiTranslate="resourceApp.products.detail.title">Products</span> {{products.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="resourceApp.products.productName">Product Name</span></dt>
+                <dd>
+                    <span>{{products.productName}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.products.handle">Handle</span></dt>
+                <dd>
+                    <span>{{products.handle}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.products.productNumber">Product Number</span></dt>
+                <dd>
+                    <span>{{products.productNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.products.searchDetails">Search Details</span></dt>
+                <dd>
+                    <span>{{products.searchDetails}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.products.sellCount">Sell Count</span></dt>
+                <dd>
+                    <span>{{products.sellCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.products.activeInd">Active Ind</span></dt>
+                <dd>
+                    <span>{{products.activeInd}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.products.lastEditedBy">Last Edited By</span></dt>
+                <dd>
+                    <span>{{products.lastEditedBy}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.products.lastEditedWhen">Last Edited When</span></dt>
+                <dd>
+                    <span>{{products.lastEditedWhen}}</span>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.products.document">Document</span></dt>
+                <dd>
+                    <div *ngIf="products.documentId">
+                        <a [routerLink]="['/product-document', products.documentId, 'view']">{{products.documentId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.products.supplier">Supplier</span></dt>
+                <dd>
+                    <div *ngIf="products.supplierId">
+                        <a [routerLink]="['/suppliers', products.supplierId, 'view']">{{products.supplierSupplierName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.products.productCategory">Product Category</span></dt>
+                <dd>
+                    <div *ngIf="products.productCategoryId">
+                        <a [routerLink]="['/product-category', products.productCategoryId, 'view']">{{products.productCategoryName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="resourceApp.products.productBrand">Product Brand</span></dt>
+                <dd>
+                    <div *ngIf="products.productBrandId">
+                        <a [routerLink]="['/product-brand', products.productBrandId, 'view']">{{products.productBrandProductBrandName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/products', products.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

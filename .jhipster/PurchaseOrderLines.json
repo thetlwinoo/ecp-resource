@@ -1,0 +1,73 @@
+{
+    "name": "PurchaseOrderLines",
+    "fields": [
+        {
+            "fieldName": "ordersOuters",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "receivedOuters",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "expectedUnitPricePerOuter",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "lastReceiptDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "isOrderLineFinalized",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "lastEditedBy",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastEditedWhen",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "packageTypes",
+            "otherEntityRelationshipName": "purchaseOrderLines",
+            "relationshipName": "packageType",
+            "otherEntityField": "packageTypeName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "stockItems",
+            "otherEntityRelationshipName": "purchaseOrderLines",
+            "relationshipName": "stockItem",
+            "otherEntityField": "stockItemName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "purchaseOrders",
+            "otherEntityRelationshipName": "purchaseOrderLineList",
+            "relationshipName": "purchaseOrder",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20191022045323",
+    "entityTableName": "purchase_order_lines",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

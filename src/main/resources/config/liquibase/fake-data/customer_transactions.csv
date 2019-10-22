@@ -1,0 +1,11 @@
+id;transaction_date;amount_excluding_tax;tax_amount;transaction_amount;outstanding_balance;finalization_date;is_finalized;last_edited_by;last_edited_when
+1;2019-10-21;27690;16885;98352;50705;2019-10-22;true;Electronics;2019-10-21
+2;2019-10-21;73263;65429;82037;15210;2019-10-21;false;Personal Loan Account Refined RAM;2019-10-21
+3;2019-10-21;50520;31966;96712;98841;2019-10-21;false;Metal alarm challenge;2019-10-21
+4;2019-10-21;97978;42748;65613;16223;2019-10-22;false;California Antarctica (the territory South of 60 deg S) transmitter;2019-10-21
+5;2019-10-22;7940;37902;73149;97345;2019-10-22;false;secured line Global Handmade;2019-10-21
+6;2019-10-21;98806;47116;90129;82163;2019-10-21;false;end-to-end;2019-10-21
+7;2019-10-21;82824;87982;33520;52543;2019-10-22;false;Fresh Ergonomic program;2019-10-21
+8;2019-10-22;90535;34794;73967;45035;2019-10-22;true;withdrawal Home Loan Account;2019-10-21
+9;2019-10-21;84144;80619;47128;84373;2019-10-21;false;Music feed;2019-10-22
+10;2019-10-21;31491;68632;381;6964;2019-10-21;false;SMTP;2019-10-22
