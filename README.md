@@ -211,4 +211,4 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [definitelytyped]: https://definitelytyped.org/
 [openapi-generator]: https://openapi-generator.tech
 [swagger-editor]: https://editor.swagger.io
-[doing api-first development]: https://www.jhipster.tech/documentation-archive/v6.4.1/doing-api-first-development/
+[doing api-first development]: https://www.jhipster.tech/documentation-archive/v6.4.1/doing-api-first-development/ '# ecp-resource'
