@@ -79,7 +79,7 @@ public class Invoices implements Serializable {
     @Column(name = "last_edited_when")
     private LocalDate lastEditedWhen;
 
-    @OneToMany(mappedBy = "invoice")
+    @OneToMany(mappedBy = "invoice",cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<InvoiceLines> invoiceLineLists = new HashSet<>();
 

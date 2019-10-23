@@ -93,15 +93,15 @@ public class People implements Serializable {
     @Column(name = "valid_to", nullable = false)
     private LocalDate validTo;
 
-    @OneToOne(mappedBy = "cartUser")
+    @OneToOne(mappedBy = "cartUser", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private ShoppingCarts cart;
 
-    @OneToOne(mappedBy = "wishlistUser")
+    @OneToOne(mappedBy = "wishlistUser", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Wishlists wishlist;
 
-    @OneToOne(mappedBy = "compareUser")
+    @OneToOne(mappedBy = "compareUser", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Compares compare;
 

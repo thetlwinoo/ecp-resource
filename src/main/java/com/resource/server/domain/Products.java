@@ -54,11 +54,11 @@ public class Products implements Serializable {
     @Column(name = "last_edited_when")
     private LocalDate lastEditedWhen;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(unique = true)
     private ProductDocument document;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<StockItems> stockItemLists = new HashSet<>();
 

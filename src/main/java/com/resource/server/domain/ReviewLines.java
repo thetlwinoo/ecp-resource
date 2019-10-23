@@ -66,7 +66,7 @@ public class ReviewLines implements Serializable {
     @JsonIgnore
     private StockItems stockItem;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JsonIgnoreProperties("reviewLineLists")
     private Reviews review;
 

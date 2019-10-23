@@ -121,15 +121,15 @@ public class StockItems implements Serializable {
     @JoinColumn(unique = true)
     private ReviewLines stockItemOnReviewLine;
 
-    @OneToMany(mappedBy = "stockItem")
+    @OneToMany(mappedBy = "stockItem",cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Photos> photoLists = new HashSet<>();
 
-    @OneToMany(mappedBy = "stockItem")
+    @OneToMany(mappedBy = "stockItem",cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<DangerousGoods> dangerousGoodLists = new HashSet<>();
 
-    @OneToMany(mappedBy = "stockItem")
+    @OneToMany(mappedBy = "stockItem",cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<SpecialDeals> specialDiscounts = new HashSet<>();
 

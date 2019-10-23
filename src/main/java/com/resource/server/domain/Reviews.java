@@ -63,7 +63,7 @@ public class Reviews implements Serializable {
     @Column(name = "last_edited_when")
     private LocalDate lastEditedWhen;
 
-    @OneToMany(mappedBy = "review")
+    @OneToMany(mappedBy = "review",cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ReviewLines> reviewLineLists = new HashSet<>();
 

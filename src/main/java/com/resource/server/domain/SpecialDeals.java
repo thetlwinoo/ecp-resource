@@ -56,11 +56,11 @@ public class SpecialDeals implements Serializable {
     @Column(name = "last_edited_when")
     private LocalDate lastEditedWhen;
 
-    @OneToMany(mappedBy = "specialDeals")
+    @OneToMany(mappedBy = "specialDeals",cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ShoppingCarts> cartDiscounts = new HashSet<>();
 
-    @OneToMany(mappedBy = "specialDeals")
+    @OneToMany(mappedBy = "specialDeals",cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Orders> orderDiscounts = new HashSet<>();
 
@@ -80,7 +80,7 @@ public class SpecialDeals implements Serializable {
     @JsonIgnoreProperties("specialDeals")
     private ProductCategory productCategory;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JsonIgnoreProperties("specialDiscounts")
     private StockItems stockItem;
 

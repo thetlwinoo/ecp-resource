@@ -51,7 +51,7 @@ public class PurchaseOrders implements Serializable {
     @Column(name = "last_edited_when")
     private LocalDate lastEditedWhen;
 
-    @OneToMany(mappedBy = "purchaseOrder")
+    @OneToMany(mappedBy = "purchaseOrder",cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<PurchaseOrderLines> purchaseOrderLineLists = new HashSet<>();
 
