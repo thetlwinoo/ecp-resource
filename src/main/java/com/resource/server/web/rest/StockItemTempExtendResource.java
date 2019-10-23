@@ -18,7 +18,7 @@ import java.util.List;
  * StockItemTempExtendResource controller
  */
 @RestController
-@RequestMapping("/api/stock-item-temp-extend")
+@RequestMapping("/api")
 public class StockItemTempExtendResource {
 
     private final Logger log = LoggerFactory.getLogger(StockItemTempExtendResource.class);

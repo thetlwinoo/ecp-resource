@@ -77,9 +77,12 @@ public class StockItemsExtendResource {
         log.debug("REST request to get StockItems by criteria: {}", criteria);
         Optional<SuppliersDTO> suppliersDTOOptional = suppliersExtendService.getSupplierByPrincipal(principal);
         List<Long> productIds = productsExtendService.getProductIdsBySupplier(suppliersDTOOptional.get().getId());
-        LongFilter productIdsFilter = new LongFilter();
-        productIdsFilter.setIn(productIds);
-        criteria.setProductId(productIdsFilter);
+        if (productIds.size() > 0) {
+            LongFilter productIdsFilter = new LongFilter();
+            productIdsFilter.setIn(productIds);
+            criteria.setProductId(productIdsFilter);
+        }
+
 
         Page<StockItemsDTO> page = stockItemsQueryService.findByCriteria(criteria, pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
