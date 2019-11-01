@@ -632,7 +632,7 @@
                         <changeLogFile>${project.basedir}/src/main/resources/config/liquibase/master.xml</changeLogFile>
                         <diffChangeLogFile>${project.basedir}/src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
                         <driver>org.postgresql.Driver</driver>
-                        <url>jdbc:postgresql://localhost:5432/ecp_db</url>
+                        <url>jdbc:postgresql://localhost:5432/epm_db</url>
                         <defaultSchemaName></defaultSchemaName>
                         <username>postgres</username>
                         <password>Passw0rd</password>
